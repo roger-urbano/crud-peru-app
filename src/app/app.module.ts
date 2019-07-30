@@ -8,10 +8,15 @@ import { ListUsersComponent } from './users/list-users/list-users.component';
 import { DetailUserComponent } from './users/detail-user/detail-user.component';
 import { AddUserComponent } from './users/add-user/add-user.component';
 import { ViewAddedUserComponent } from './users/view-added-user/view-added-user.component';
+import { HttpClientModule } from '@angular/common/http';
 
 // DatePicker
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
+
+// Services
+import { UsersService } from './services/users.service';
 
 
 @NgModule({
@@ -27,9 +32,12 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+     UsersService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

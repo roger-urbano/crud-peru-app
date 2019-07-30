@@ -6,6 +6,7 @@ import {DetailUserComponent} from './users/detail-user/detail-user.component';
 import {ViewAddedUserComponent} from './users/view-added-user/view-added-user.component';
 
 const routes: Routes = [
+   { path: '', component: ListUsersComponent, pathMatch: 'full' },
    { path: 'usuarios',
       children: [
          { path: '', component: ListUsersComponent },
@@ -17,8 +18,6 @@ const routes: Routes = [
          { path: 'nuevo-usuario', component: ViewAddedUserComponent },
       ]
    },
-   // { path: 'agregar-usuario/nuevo-usuario', component: ViewAddedUserComponent },
-   { path: '', component: ListUsersComponent, pathMatch: 'full' },
    // { path: '**', component: PageNotFoundComponent }
 ];
 

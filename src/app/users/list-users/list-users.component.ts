@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {UsersService} from '../../services/users.service';
+import {Iuser} from '../../interfaces/user';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-list-users',
@@ -8,10 +11,25 @@ import {Router} from '@angular/router';
 })
 export class ListUsersComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  users: Iuser[];
+
+  constructor(private usersService: UsersService, private router: Router) {
+     this.users = [];
+  }
 
   ngOnInit() {
-     this.router.navigateByUrl('/usuarios');
+     this.router.navigateByUrl('/usuarios'); // Iniciar en pantalla de usuarios.
+     this.getUsers();
   }
+
+   getUsers() {
+     this.usersService.getUsers().subscribe(users => {
+         this.users = users;
+     },(err) => console.log('error al consultar', err));
+   }
+
+   goDetailUser(idUser: number) {
+      this.router.navigate(['usuarios/detalle-usuario/', idUser]);
+   }
 
 }

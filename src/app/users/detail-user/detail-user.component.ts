@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {UsersService} from '../../services/users.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Iuser} from '../../interfaces/user';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-detail-user',
@@ -7,9 +11,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailUserComponent implements OnInit {
 
-  constructor() { }
+   user: Iuser;
+   idUrl;
+
+  constructor(private usersService: UsersService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private location: Location) {
+     // this.router.navigateByUrl('/usuarios');
+     // @ts-ignore
+     this.user = {};
+     this.idUrl = this.activatedRoute.snapshot.paramMap.get('id');  // Capturar valor de id de la url
+  }
 
   ngOnInit() {
+     this.getDetailUser(this.idUrl);
+  }
+
+  getDetailUser(idUser: number) {
+     this.usersService.getDetailUser(idUser).subscribe(user => {
+        this.user = user;
+     });
+  }
+
+  goListUser() {
+     // this.router.navigate(['usuarios/detalle-usuario/', idUser]);
+     this.location.back();
+
   }
 
 }

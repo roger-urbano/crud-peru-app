@@ -9,11 +9,10 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 export class AddUserComponent implements OnInit {
 
    colorTheme = 'theme-orange';
-
    bsConfig: Partial<BsDatepickerConfig>;
 
   constructor() {
-     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });
+     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });  // Personalizar dataPicker.
   }
 
   ngOnInit() {
