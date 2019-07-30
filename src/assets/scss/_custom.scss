@@ -1,0 +1,136 @@
+body {
+  font-size: 0.9em;
+  color: $color-1 !important;
+  background-color: $color-bg !important;
+}
+
+.navbar-light .navbar-nav .nav-link{
+  color: $color-3;
+}
+
+.navbar {
+  padding: 0.5rem 1rem;
+
+  .fas {
+    margin-right: 10px;
+    font-size: 17px;
+    vertical-align: middle;
+  }
+}
+
+.fas {
+  margin-right: 10px;
+  vertical-align: middle;
+  font-size: 17px;
+}
+
+.navbar-light {
+  .navbar-nav {
+      .nav-link {
+        padding-left: 30px;
+        padding-right: 30px;
+        &.active {
+          color: $color-2;
+        }
+        &:hover {
+          color: $color-2;
+        }
+      }
+  }
+}
+
+.titles {
+  margin-bottom: 40px;
+  border-left: 4px solid $color-2;
+  padding: 5px 20px;
+  box-sizing: border-box;
+
+  h1 {
+    color: $color-2;
+    font-weight: 300;
+    margin-bottom: 0;
+  }
+}
+
+.item-usuario {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1.20rem;
+  position: relative;
+
+  .fas {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    margin: auto;
+    transform: translateY(-50%);
+    font-size: 18px;
+  }
+
+}
+.figure-usuario{
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  overflow: hidden;
+  margin-right: 20px;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.figure-card {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-2;
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.card-detalle {
+  a {
+    color: $color-1;
+  }
+}
+
+.formulario {
+  .form-group {
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 45px;
+
+    .fas {
+      position: absolute;
+      right: 20px;
+      bottom: 10px;
+      pointer-events: none;
+      color: $color-3;
+    }
+  }
+  label {
+    margin-bottom: 0;
+  }
+  input {
+    height: calc(1em + 1rem + 0rem) !important;
+    padding-right: 30px;
+
+    &:focus {
+      + .fas {
+        color: $color-2;
+        transition: all .1s linear;
+      }
+    }
+  }
+
+}
+
+

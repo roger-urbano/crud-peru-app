@@ -3,14 +3,31 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { ListUsersComponent } from './users/list-users/list-users.component';
+import { DetailUserComponent } from './users/detail-user/detail-user.component';
+import { AddUserComponent } from './users/add-user/add-user.component';
+import { ViewAddedUserComponent } from './users/view-added-user/view-added-user.component';
+
+// DatePicker
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    ListUsersComponent,
+    DetailUserComponent,
+    AddUserComponent,
+    ViewAddedUserComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
