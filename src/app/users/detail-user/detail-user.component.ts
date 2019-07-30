@@ -18,7 +18,6 @@ export class DetailUserComponent implements OnInit {
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private location: Location) {
-     // this.router.navigateByUrl('/usuarios');
      // @ts-ignore
      this.user = {};
      this.idUrl = this.activatedRoute.snapshot.paramMap.get('id');  // Capturar valor de id de la url

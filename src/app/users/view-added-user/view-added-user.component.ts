@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BsDatepickerConfig} from 'ngx-bootstrap';
+import {IuserNew} from '../../interfaces/user-new';
 
 @Component({
   selector: 'app-view-added-user',
@@ -10,6 +11,8 @@ export class ViewAddedUserComponent implements OnInit {
 
    colorTheme = 'theme-orange';
    bsConfig: Partial<BsDatepickerConfig>;
+
+   @Input() userNew: IuserNew;
 
    constructor() {
       this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });

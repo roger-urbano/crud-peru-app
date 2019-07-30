@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Iuser} from '../interfaces/user';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {IuserNew} from '../interfaces/user-new';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class UsersService {
      );
   }
 
-  postUser() {
-
+  createUser(newUser: IuserNew) {
+      return this.httpClient.post(`${this.BASE_URL}api/users`, newUser);
   }
 }

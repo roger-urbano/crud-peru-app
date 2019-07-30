@@ -1,8 +1,10 @@
 export interface IuserNew {
-   nombre: string,
-   apellidopat: string,
-   apellidomat: string,
+   name: string,
+   aPaterno: string,
+   aMaterno: string,
    email: string,
-   fchnac: any,
-   fchingreso: any
+   fechaN: any,
+   fechaI: any,
+   id?: number,
+   createdAt?: any
 }
