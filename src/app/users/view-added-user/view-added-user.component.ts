@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BsDatepickerConfig} from 'ngx-bootstrap';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UsersService} from '../../services/users.service';
@@ -27,9 +27,11 @@ export class ViewAddedUserComponent implements OnInit {
    ngOnInit() {
       this.activatedRoute.queryParams.subscribe((params) => {
          this.userNew = JSON.parse(params.data);
+         console.log(this.userNew);
       });
    }
 
+   /* Retroceder a ruta anterior. */
    backAddUser() {
       this.location.back();
    }

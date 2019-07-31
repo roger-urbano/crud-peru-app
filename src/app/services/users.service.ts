@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import {Iuser} from '../interfaces/user';
 import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
    providedIn: 'root'
@@ -12,6 +12,7 @@ export class UsersService {
 
    private BASE_URL: string;
    userNew: Observable<any>;
+   public users: any;
 
    constructor(private httpClient: HttpClient) {
       this.BASE_URL = 'https://reqres.in/';
@@ -30,9 +31,20 @@ export class UsersService {
       );
    }
 
-   createUser(userNew: Iuser): Observable<any>{
-      return this.httpClient.post(`${this.BASE_URL}api/users`, userNew);
+   createUser(firstname, lastname, lastnameM, mail, fechan, fechai): Observable<any>{
+
+      const params = new HttpParams()
+         .set('first_name', firstname)
+         .set('last_name', lastname)
+         .set('last_nameM', lastnameM)
+         .set('email', mail)
+         .set('fechaN', fechan)
+         .set('fechaI', fechai);
+
+      const headers =  new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+      return this.httpClient.post(`${this.BASE_URL}api/users`, params,);
    }
+
 
    updateUser(user: Iuser) {
       return this.httpClient.put(`${this.BASE_URL}api/users/${user.id}`, user);
