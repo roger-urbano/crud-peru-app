@@ -9,36 +9,35 @@
       <div class="card-body bg-light text-body row">
          <div class="col-lg-3 col-md-4 col-sm-12 mb-3">
             <figure class="figure-card rounded-circle overflow-hidden align-items-center m-auto">
-               <img [src]="user.avatar || '' " alt="" >
+               <img [src]="user.avatar || '' " alt="">
             </figure>
          </div>
          <div class="col-lg-9 col-md-8 col-sm-12">
-            <p class="mb-3">
-               <strong>Nombre: </strong><span> {{ user.first_name}}</span>
+            <p class="mb-2">
+               <strong>Nombre: </strong><span> {{ user.first_name }}</span>
             </p>
-            <p class="mb-3">
-               <strong>Apellido paterno: </strong><span>{{ user.last_name}}</span>
+            <p class="mb-2">
+               <strong>Apellido paterno: </strong><span>{{ user.last_name }}</span>
             </p>
-            <p class="mb-3">
-               <strong>Apellido materno: </strong><span>{{ user.last_nameM}}</span>
+            <p class="mb-2">
+               <strong>Apellido materno: </strong><span>{{ user.last_nameM }}</span>
             </p>
             <p>
-               <strong>Email: </strong> <a href="mailto: george.bluth@reqres.in" class="card-text">{{ user.email}}</a>
+               <strong>Email: </strong> <a href="mailto: george.bluth@reqres.in" class="card-text">{{ user.email }}</a>
             </p>
-            <p class="mb-3">
-               <strong>fecha de Nacimiento: </strong><span>{{ user.fechaN}}</span>
+            <p class="mb-2">
+               <strong>fecha de Nacimiento: </strong><span>{{ user.fechaN | date:'MM-dd-yyyy' }}</span>
             </p>
-            <p class="mb-3">
-               <strong>fecha de Nacimiento: </strong><span>{{ user.fechaI}}</span>
-            </p>
-            <p class="mb-3">
-               <strong>createdAt: </strong><span>{{ user.createdAt}}</span>
+            <p class="mb-2">
+               <strong>fecha de Término: </strong><span>{{ user.fechaI | date:'MM-dd-yyyy' }}</span>
             </p>
          </div>
       </div>
    </div>
    <div class="text-right">
-      <button type="button" class="btn btn-outline-warning mr-3" (click)="backListUser()"><i class="fas fa-undo-alt"></i>Volver</button>
+      <button type="button" class="btn btn-outline-warning mr-3" (click)="backListUser()"><i
+            class="fas fa-undo-alt"></i>Volver
+      </button>
       <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#editarModal">
          <i class="fas fa-pencil-alt"></i>Editar
       </button>
@@ -47,7 +46,8 @@
 
 
 <!--Modal-->
-<div class="modal fade bd-example-modal-lg" id="editarModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade bd-example-modal-lg" id="editarModal" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel">
    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
          <div class="modal-header mb-4">
@@ -56,59 +56,71 @@
                <span aria-hidden="true">&times;</span>
             </button>
          </div>
-         <div class="modal-body p-5">
-            <form action="" class="formulario bg-light">
+         <div class="modal-body">
+            <form [formGroup]="formEditUser" class="formulario bg-light">
                <div class="row">
                   <div class="form-group col-md-6 pr-4">
                      <label for="inputName">Nombre</label>
-                     <input type="text" class="form-control" id="inputName" autocomplete="off">
+                     <input type="text" formControlName="first_name" class="form-control" id="inputName"
+                     [value]="user.first_name" autocomplete="off">
                      <i class="fas fa-user"></i>
                   </div>
                   <div class="form-group col-md-6 pl-4">
                      <label for="inputApaterno">Apellido paterno</label>
-                     <input type="text" class="form-control" id="inputApaterno" autocomplete="off">
+                     <input type="text" formControlName="last_name" class="form-control" id="inputApaterno"
+                     [value]="user.last_name" autocomplete="off">
                      <i class="fas fa-user-tag"></i>
                   </div>
                   <div class="form-group col-md-6 pr-4">
                      <label for="inputAmaterno">Apellido materno</label>
-                     <input type="text" class="form-control" id="inputAmaterno" autocomplete="off">
+                     <input type="text" formControlName="last_nameM" class="form-control" id="inputAmaterno"
+                     [value]="user.last_nameM" autocomplete="off">
                      <i class="fas fa-user-tag"></i>
                   </div>
                   <div class="form-group col-md-6 pl-4">
                      <label for="exampleInputEmail1">Email</label>
-                     <input type="email" class="form-control" id="exampleInputEmail1" autocomplete="off">
+                     <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
+                     [value]="user.email"_nameMautocomplete="off">
                      <i class="fas fa-envelope"></i>
                   </div>
                   <div class="form-group col-md-6 pr-4">
                      <label for="inputFnacimiento">Fecha de nacimiento</label>
                      <input type="text"
-                            placeholder=""
                             autocomplete="off"
+                            formControlName="fechaN"
+                            placeholder=""
                             class="form-control"
                             bsDatepicker
                             placement="top"
                             [bsConfig]="bsConfig"
-                            id="inputFnacimiento">
+                            id="inputFnacimiento"
+                     [value]="user.fechaN">
                      <i class="fas fa-calendar-alt"></i>
                   </div>
                   <div class="form-group col-md-6 mb-6 pl-4">
                      <label for="inputFingreso">Fecha de ingreso</label>
                      <input type="text"
-                            placeholder=""
                             autocomplete="off"
+                            formControlName="fechaI"
+                            placeholder=""
                             class="form-control"
                             bsDatepicker
                             placement="top"
                             [bsConfig]="bsConfig"
-                            id="inputFingreso">
+                            id="inputFingreso"
+                     [value]="user.fechaI">
                      <i class="fas fa-calendar-alt"></i>
                   </div>
                </div>
+               <div class="text-right">
+                  <button type="button"
+                          class="btn btn-outline-warning mr-3"
+                          data-dismiss="modal">
+                     <i class="fas fa-window-close"></i>Cancelar
+                  </button>
+                  <button type="submit" class="btn btn-warning" data-dismiss="modal" (click)="onSaveForm()"><i class="fas fa-save"></i>Guardar</button>
+               </div>
             </form>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-outline-warning mr-3" data-dismiss="modal"><i class="fas fa-window-close"></i>Cancelar</button>
-            <button type="button" class="btn btn-warning"><i class="fas fa-save"></i>Guardar</button>
          </div>
       </div>
    </div>

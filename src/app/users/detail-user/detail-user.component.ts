@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Iuser} from '../../interfaces/user';
 import { Location } from '@angular/common';
 import {BsDatepickerConfig} from 'ngx-bootstrap';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-detail-user',
@@ -18,7 +19,11 @@ export class DetailUserComponent implements OnInit {
    user: Iuser;
    idUrl;
 
+   formEditUser: FormGroup;
+   formEditUserValue: Iuser;
+
   constructor(private usersService: UsersService,
+              private formBuilder: FormBuilder,
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private location: Location) {
@@ -27,6 +32,15 @@ export class DetailUserComponent implements OnInit {
      // @ts-ignore
      this.user = {};
      this.idUrl = this.activatedRoute.snapshot.paramMap.get('id');  // Capturar valor de id de la url
+
+     this.formEditUser = new FormGroup({
+        first_name: new FormControl(''),
+        last_name: new FormControl(''),
+        last_nameM: new FormControl(''),
+        email: new FormControl(''),
+        fechaN: new FormControl(''),
+        fechaI: new FormControl(''),
+     });
   }
 
   ngOnInit() {
@@ -39,8 +53,31 @@ export class DetailUserComponent implements OnInit {
      });
   }
 
+  /* Retornar a pantalla anterior*/
   backListUser() {
      this.location.back();
   }
+   resetForm() {
+      this.formEditUser.reset();
+   }
+
+   /* Validar Formulario */
+   onSaveForm() {
+      if (this.formEditUser.valid) {
+         this.formEditUserValue = this.formEditUser.value;
+         this.user = this.formEditUser.value;
+         this.updateUser(this.formEditUserValue);
+         this.updateUser(this.idUrl);
+
+      } else {
+         console.log('Formulario no es valido');
+      }
+   }
+
+   /* Actualizar Usuario */
+   updateUser(user: Iuser) {
+      this.usersService.updateUser(user).subscribe(userUpdate => {
+      });
+   }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Iuser} from '../interfaces/user';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
    providedIn: 'root'
 })
 export class UsersService {
+
 
    private BASE_URL: string;
    userNew: Observable<any>;
@@ -31,6 +32,10 @@ export class UsersService {
 
    createUser(userNew: Iuser): Observable<any>{
       return this.httpClient.post(`${this.BASE_URL}api/users`, userNew);
+   }
+
+   updateUser(user: Iuser) {
+      return this.httpClient.put(`${this.BASE_URL}api/users/${user.id}`, user);
    }
 }
 

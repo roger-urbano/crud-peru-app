@@ -26,10 +26,10 @@
                <strong>Email: </strong> <a href="mailto: george.bluth@reqres.in" class="card-text">{{ userNew.email}}</a>
             </p>
             <p class="mb-3">
-               <strong>fecha de Nacimiento: </strong><span>{{ userNew.fechaN}}</span>
+               <strong>fecha de Nacimiento: </strong><span>{{ userNew.fechaN | date:'MM-dd-yyyy'}}</span>
             </p>
             <p class="mb-3">
-               <strong>fecha de Nacimiento: </strong><span>{{ userNew.fechaI}}</span>
+               <strong>fecha de Nacimiento: </strong><span>{{ userNew.fechaI | date:'MM-dd-yyyy'}}</span>
             </p>
             <p class="mb-3">
                <strong>createdAt: </strong><span>{{ userNew.createdAt}}</span>

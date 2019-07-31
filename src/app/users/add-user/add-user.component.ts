@@ -28,7 +28,7 @@ export class AddUserComponent implements OnInit {
 
       this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });  // Personalizar dataPicker.
 
-     this.formAddUser = new FormGroup({
+    this.formAddUser = new FormGroup({
          first_name: new FormControl('', [Validators.required]),
          last_name: new FormControl('', [Validators.required]),
          last_nameM: new FormControl('', [Validators.required]),
@@ -71,12 +71,11 @@ export class AddUserComponent implements OnInit {
    /* Validar Formulario */
    onSaveForm() {
       if (this.formAddUser.valid) {
-         // console.log(JSON.stringify(this.formAddUser.value));
          this.formAddUserValue = this.formAddUser.value;
          this.createUser();
          this.resetForm();
       } else {
-         console.log('no es valido');
+         console.log('Formulario no es valido');
       }
    }
 
