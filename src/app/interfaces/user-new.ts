@@ -3,8 +3,8 @@ export interface IuserNew {
    aPaterno: string,
    aMaterno: string,
    email: string,
-   fechaN: any,
-   fechaI: any,
+   fechaN?: any,
+   fechaI?: any,
    id?: number,
    createdAt?: any
 }

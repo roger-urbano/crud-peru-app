@@ -3,33 +3,43 @@ import {HttpClient} from '@angular/common/http';
 import {Iuser} from '../interfaces/user';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import {IuserNew} from '../interfaces/user-new';
 
 @Injectable({
-  providedIn: 'root'
+   providedIn: 'root'
 })
 export class UsersService {
 
    private BASE_URL: string;
+   userNew: Observable<any>;
 
-  constructor(private httpClient: HttpClient) {
-     this.BASE_URL = 'https://reqres.in/';
-  }
+   constructor(private httpClient: HttpClient) {
+      this.BASE_URL = 'https://reqres.in/';
+   }
 
-  getUsers(): Observable<Iuser[]> {
-     // Crear array desde los valores que vienen desde la propiedad "data"
-     return this.httpClient.get(`${this.BASE_URL}api/users?page=1`).pipe(
-        map((item: any) => item.data)
-     );
-  }
+   getUsers(): Observable<Iuser[]> {
+      // Crear array desde los valores que vienen desde la propiedad "data"
+      return this.httpClient.get(`${this.BASE_URL}api/users?page=1`).pipe(
+         map((item: any) => item.data)
+      );
+   }
 
-  getDetailUser(idUser: number): Observable<Iuser> {
-     return this.httpClient.get(`${this.BASE_URL}api/users/${idUser}`).pipe(
-        map((user: any) => user.data)
-     );
-  }
+   getDetailUser(idUser: number): Observable<Iuser> {
+      return this.httpClient.get(`${this.BASE_URL}api/users/${idUser}`).pipe(
+         map((user: any) => user.data)
+      );
+   }
 
-  createUser(newUser: IuserNew) {
-      return this.httpClient.post(`${this.BASE_URL}api/users`, newUser);
-  }
+   createUser(userNew: Iuser): Observable<any>{
+      return this.httpClient.post(`${this.BASE_URL}api/users`, userNew);
+   }
 }
+
+
+
+
+
+
+
+
+
+

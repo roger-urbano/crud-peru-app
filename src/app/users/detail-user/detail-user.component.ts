@@ -3,6 +3,7 @@ import {UsersService} from '../../services/users.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Iuser} from '../../interfaces/user';
 import { Location } from '@angular/common';
+import {BsDatepickerConfig} from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-detail-user',
@@ -11,6 +12,9 @@ import { Location } from '@angular/common';
 })
 export class DetailUserComponent implements OnInit {
 
+   colorTheme = 'theme-orange';
+   bsConfig: Partial<BsDatepickerConfig>;
+
    user: Iuser;
    idUrl;
 
@@ -18,6 +22,8 @@ export class DetailUserComponent implements OnInit {
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private location: Location) {
+     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });  // Personalizar dataPicker.
+
      // @ts-ignore
      this.user = {};
      this.idUrl = this.activatedRoute.snapshot.paramMap.get('id');  // Capturar valor de id de la url
@@ -33,10 +39,8 @@ export class DetailUserComponent implements OnInit {
      });
   }
 
-  goListUser() {
-     // this.router.navigate(['usuarios/detalle-usuario/', idUser]);
+  backListUser() {
      this.location.back();
-
   }
 
 }

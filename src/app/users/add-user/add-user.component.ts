@@ -3,8 +3,8 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import {UsersService} from '../../services/users.service';
 import {NgForm} from '@angular/forms';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {IuserNew} from '../../interfaces/user-new';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Iuser} from '../../interfaces/user';
 
 
 @Component({
@@ -18,23 +18,21 @@ export class AddUserComponent implements OnInit {
    bsConfig: Partial<BsDatepickerConfig>;
 
    formAddUser: FormGroup;
-   formAddUserValue: IuserNew;
-   newUser: any;
-
-   @Output() enviarNewUser = new EventEmitter<any>();
+   formAddUserValue: Iuser;
+   userAddedTemp: Iuser;
 
    constructor(private usersService: UsersService,
                private formBuilder: FormBuilder,
-               private router: Router) {
+               private router: Router,
+               private activatedRoute: ActivatedRoute) {
 
-     this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });  // Personalizar dataPicker.
-     this.newUser = '';
+      this.bsConfig = Object.assign({}, { containerClass: this.colorTheme });  // Personalizar dataPicker.
 
      this.formAddUser = new FormGroup({
-         name: new FormControl('', [Validators.required]),
-         aPaterno: new FormControl('', [Validators.required]),
-         aMaterno: new FormControl('', [Validators.required]),
-         email: new FormControl('', [Validators.required, Validators.email]),
+         first_name: new FormControl('', [Validators.required]),
+         last_name: new FormControl('', [Validators.required]),
+         last_nameM: new FormControl('', [Validators.required]),
+         email: new FormControl('', [Validators.required]),
          fechaN: new FormControl('', [Validators.required]),
          fechaI: new FormControl('', [Validators.required]),
       });
@@ -43,34 +41,40 @@ export class AddUserComponent implements OnInit {
   ngOnInit() {
   }
 
-   goNewUser() {
-      this.router.navigate(['agregar-usuario/nuevo-usuario']);
-   }
 
   createUser() {
-     this.usersService.createUser(this.formAddUserValue).subscribe(newUser => {
-        this.newUser = newUser;
-        console.log(this.newUser);
-     });
+     this.usersService.createUser(this.formAddUserValue).subscribe(user =>
+        {
+        this.userAddedTemp = user;
+        },
+        err => { console.log("error");
+        },
+         () => {
+            this.routerNewuser(this.userAddedTemp);
+         }
+        );
   }
-
-   sendNewUser() {
-      this.enviarNewUser.emit(this.newUser);
-   }
-
 
    resetForm() {
       this.formAddUser.reset();
    }
 
-   // Validar Formulario
+
+   routerNewuser(userAdded: Iuser) {
+      let data = userAdded;
+      this.router.navigate(['agregar-usuario/nuevo-usuario'], {
+      queryParams: { data: JSON.stringify(data)}
+      });
+   }
+
+
+   /* Validar Formulario */
    onSaveForm() {
       if (this.formAddUser.valid) {
          // console.log(JSON.stringify(this.formAddUser.value));
          this.formAddUserValue = this.formAddUser.value;
          this.createUser();
          this.resetForm();
-         // this.goNewUser();
       } else {
          console.log('no es valido');
       }

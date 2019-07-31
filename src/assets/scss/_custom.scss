@@ -116,6 +116,14 @@ body {
       pointer-events: none;
       color: $color-3;
     }
+    &.is-valid {
+      input {
+        box-shadow: inset 0 -2px 0 $color-2;
+      }
+      .fas {
+        color: $color-2;
+      }
+    }
   }
   label {
     margin-bottom: 0;

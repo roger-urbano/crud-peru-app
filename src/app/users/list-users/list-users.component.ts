@@ -29,7 +29,7 @@ export class ListUsersComponent implements OnInit {
    }
 
    goDetailUser(idUser: number) {
-      this.router.navigate(['usuarios/detalle-usuario/', idUser]);
+      this.router.navigate(['usuarios/detalle-usuario/', idUser]);   // Enviar id por URL.
    }
 
 }
