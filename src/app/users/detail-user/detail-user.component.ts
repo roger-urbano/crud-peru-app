@@ -64,7 +64,6 @@ export class DetailUserComponent implements OnInit {
          this.formEditUserValue = this.formEditUser.value;
          this.user = this.formEditUser.value;
          this.updateUser(this.formEditUserValue);
-         this.updateUser(this.idUrl);
 
       } else {
          console.log('Formulario no es valido');

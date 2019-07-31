@@ -3,7 +3,7 @@
          <h1>Lista de usuarios</h1>
       </div>
    <div class="list-group shadow-sm">
-      <a *ngFor="let user of users" class="item-usuario list-group-item list-group-item-action list-group-item-light" (click)="goDetailUser(user.id)">
+      <a *ngFor="let user of users" class="item-usuario list-group-item list-group-item-action list-group-item-secondary" (click)="goDetailUser(user.id)">
          <figure class="figure-usuario rounded-circle">
             <img [src]="user.avatar" alt="">
          </figure>
