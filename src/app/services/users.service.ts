@@ -42,12 +42,16 @@ export class UsersService {
          .set('fechaI', fechai);
 
       const headers =  new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-      return this.httpClient.post(`${this.BASE_URL}api/users`, params,);
+      return this.httpClient.post(`${this.BASE_URL}api/users`, params);
    }
 
 
    updateUser(user: Iuser) {
       return this.httpClient.put(`${this.BASE_URL}api/users/${user.id}`, user);
+   }
+
+   deleteUser(idUser: Iuser) {
+      return this.httpClient.delete(`${this.BASE_URL}api/users/${idUser}`);
    }
 }
 

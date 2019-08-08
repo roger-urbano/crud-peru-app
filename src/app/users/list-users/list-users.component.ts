@@ -32,4 +32,9 @@ export class ListUsersComponent implements OnInit {
       this.router.navigate(['usuarios/detalle-usuario/', idUser]);   // Enviar id por URL.
    }
 
+   deleteUser(idUser) {
+     console.log("Eliminar item con id: " + idUser);
+     this.usersService.deleteUser(idUser).subscribe(response => response);
+   }
+
 }

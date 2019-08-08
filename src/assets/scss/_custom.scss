@@ -54,21 +54,43 @@ body {
 
 .item-usuario {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 0.6rem 1.20rem;
   position: relative;
-  cursor: pointer;
 
-  .fas {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    margin: auto;
-    transform: translateY(-50%);
-    font-size: 18px;
+  .set-user {
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    p {
+      margin: 0;
+    }
   }
 
+  .set-btn {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .btn-eliminar {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    line-height: 1;
+    .fas {
+      margin: 0;
+    }
+  }
 }
+
 .figure-usuario{
   width: 50px;
   height: 50px;

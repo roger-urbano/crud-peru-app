@@ -63,7 +63,8 @@ export class DetailUserComponent implements OnInit {
       if (this.formEditUser.valid) {
          this.formEditUserValue = this.formEditUser.value;
          this.user = this.formEditUser.value;
-         this.updateUser(this.formEditUserValue);
+         // this.updateUser(this.formEditUserValue);
+         this.updateUser(this.idUrl);
 
       } else {
          console.log('Formulario no es valido');
@@ -75,3 +76,10 @@ export class DetailUserComponent implements OnInit {
       this.usersService.updateUser(user).subscribe(userUpdate => userUpdate);
    }
 }
+
+
+
+
+
+
+

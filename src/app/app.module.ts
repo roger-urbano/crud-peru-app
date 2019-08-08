@@ -18,6 +18,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 // Services
 import { UsersService } from './services/users.service';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './services/login.service';
+import { RegisterComponent } from './register/register.component';
+import {RegisterService} from './services/register.service';
 
 
 @NgModule({
@@ -27,7 +31,9 @@ import { UsersService } from './services/users.service';
     ListUsersComponent,
     DetailUserComponent,
     AddUserComponent,
-    ViewAddedUserComponent
+    ViewAddedUserComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,9 @@ import { UsersService } from './services/users.service';
     ReactiveFormsModule
   ],
   providers: [
-     UsersService
+     UsersService,
+     LoginService,
+     RegisterService
   ],
   bootstrap: [AppComponent]
 })

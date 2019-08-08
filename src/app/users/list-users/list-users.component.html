@@ -3,12 +3,17 @@
          <h1>Lista de usuarios</h1>
       </div>
    <div class="list-group shadow-sm">
-      <a *ngFor="let user of users" class="item-usuario list-group-item list-group-item-action list-group-item-secondary" (click)="goDetailUser(user.id)">
-         <figure class="figure-usuario rounded-circle">
-            <img [src]="user.avatar" alt="">
-         </figure>
-         <p>{{ user.first_name }} {{ user.last_name }} </p>
-         <i class="fas fa-info-circle"></i>
+      <a *ngFor="let user of users" class="item-usuario list-group-item list-group-item-action list-group-item-secondary">
+         <div class="set-user">
+            <figure class="figure-usuario rounded-circle">
+               <img [src]="user.avatar" alt="">
+            </figure>
+            <p>{{ user.first_name }} {{ user.last_name }} </p>
+         </div>
+         <div class="set-btn">
+            <button class="btn-eliminar btn btn-primary mr-4" (click)="goDetailUser(user.id)"><i class="fas fa-id-card"></i></button>
+            <button class="btn-eliminar btn btn-danger" (click)="deleteUser(user.id)"><i class="far fa-trash-alt"></i></button>
+         </div>
       </a>
    </div>
 </section>
